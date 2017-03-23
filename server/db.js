@@ -4,14 +4,17 @@ var knex = require('knex')(config)
 
 module.exports = {
   getTacos: getTacos,
-  // saveWidget: saveWidget
+  saveTacos: saveTacos
 }
 
 function getTacos () {
   return knex('tacos').select()
 }
 
-// function saveWidget (widget) {
-//   widget.id = widgets.length + 1
-//   widgets.push(widget)
-// }
+function saveTacos (name, price, topping, shell, cheese) {
+  // tacos.id = tacos.length + 1
+  // tacos.push(tacos)
+  knex('tacos').insert({name: name, price: price, topping: topping, shell: shell, cheese: cheese})
+}
+
+// saveTacos('1', '2', '3', '4', '5')

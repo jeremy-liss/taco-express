@@ -12,9 +12,9 @@ router.get('/', function (req, res) {
   })
 })
 
-// router.post('/', function (req, res) {
-//   db.saveWidget(req.body)
-//   res.sendStatus(200)
-// })
+router.post('/', function (req, res) {
+  db.saveTacos(req.body)
+  res.sendStatus(200)
+})
 
 module.exports = router
