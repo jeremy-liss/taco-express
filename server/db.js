@@ -1,33 +1,17 @@
+var env = process.env['NODE_ENV'] || 'development'
+var config = require('../knexfile.js')[env]
+var knex = require('knex')(config)
+
 module.exports = {
-  getWidgets: getWidgets,
-  saveWidget: saveWidget
+  getTacos: getTacos,
+  // saveWidget: saveWidget
 }
 
-var widgets = [{
-  id: 1,
-  name: 'Red widget',
-  price: 23.45,
-  mfg: 'Acme Inc.',
-  inStock: 4
-}, {
-  id: 2,
-  name: 'Blue widget',
-  price: 423.47,
-  mfg: 'Acme Inc.',
-  inStock: 8
-}, {
-  id: 3,
-  name: 'Yellow widget',
-  price: 123.40,
-  mfg: 'Acme Inc.',
-  inStock: 3
-}]
-
-function getWidgets () {
-  return widgets
+function getTacos () {
+  return knex('tacos').select()
 }
 
-function saveWidget (widget) {
-  widget.id = widgets.length + 1
-  widgets.push(widget)
-}
+// function saveWidget (widget) {
+//   widget.id = widgets.length + 1
+//   widgets.push(widget)
+// }
