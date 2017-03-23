@@ -1,28 +1,35 @@
 import request from 'superagent'
 
-var widgetUrl = 'http://localhost:3000/widgets'
+var widgetUrl = 'http://localhost:3000/tacos'
 
 export default {
-  getWidgets: getWidgets,
-  appendWidget: appendWidget
+  getTacos: getTacos,
+  appendTaco: appendTaco
 }
 
-function getWidgets (callback) {
-  request
-    .get(widgetUrl)
-    .end(function (err, res) {
-      if (err) {
-        callback(err)
-      } else {
-        callback(null, res.body)
-      }
-    })
+function getTacos (callback) {
+  var data = [
+    {id: 1, name: 'Chicken', price: 3, topping: 'Guacamole', shell: 'Soft', cheese: 'Edam'},
+    {id: 2, name: 'Fish', price: 4, topping: 'Salsa', shell: 'Hard', cheese: 'Cheddar'},
+    {id: 3, name: 'Beans', price: 2, topping: 'Guacamole', shell: 'Soft', cheese: 'Roquefort'}
+  ]
+  callback (null, data)
+
+//   request
+//     .get(tacoUrl)
+//     .end(function (err, res) {
+//       if (err) {
+//         callback(err)
+//       } else {
+//         callback(null, res.body)
+//       }
+//     })
 }
 
-function appendWidget (widget, callback) {
+function appendTaco (taco, callback) {
   request
-    .post(widgetUrl)
-    .send(widget)
+    .post(tacoUrl)
+    .send(taco)
     .end(function (err, res) {
       if (err) {
         callback(err)

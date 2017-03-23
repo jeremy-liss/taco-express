@@ -1,44 +1,44 @@
 import React from 'react'
 
 import api from '../api'
-import AddWidget from './AddWidget'
-import WidgetList from './WidgetList'
-import WidgetDetails from './WidgetDetails'
+import AddTaco from './AddTaco'
+import TacoList from './TacoList'
+import TacoDetails from './TacoDetails'
 import ErrorMessage from './ErrorMessage'
 
 export default React.createClass({
   getInitialState () {
     return {
       error: null,
-      widgets: [],
-      activeWidget: null,
+      tacos: [],
+      activeTaco: null,
       detailsVisible: false,
-      addWidgetVisible: false
+      addtacoVisible: false
     }
   },
 
   componentDidMount () {
-    api.getWidgets(this.renderWidgets)
+    api.getTacos(this.renderTacos)
   },
 
-  renderWidgets (err, widgets) {
+  renderTacos (err, tacos) {
     this.setState({
       error: err,
-      widgets: widgets
+      tacos: tacos
     })
   },
 
   refreshList (err) {
     this.setState({
       error: err,
-      addWidgetVisible: false
+      addtacoVisible: false
     })
-    api.getWidgets(this.renderWidgets)
+    api.getTacos(this.renderTacos)
   },
 
-  showAddWidget () {
+  showAddtaco () {
     this.setState({
-      addWidgetVisible: true
+      addtacoVisible: true
     })
   },
 
@@ -46,24 +46,23 @@ export default React.createClass({
     return (
       <div>
         <ErrorMessage error={this.state.error} />
-        <h1>Widgets FTW!</h1>
-        <WidgetList
+        <h1>Taco Express!</h1>
+        <TacoList
           showDetails={this.showDetails}
-          widgets={this.state.widgets} />
-        <p><a href='#' onClick={this.showAddWidget}>Add widget</a></p>
-        {this.state.addWidgetVisible && <AddWidget
+          tacos={this.state.tacos} />
+        {this.state.addtacoVisible && <Addtaco
           finishAdd={this.refreshList} />}
-        {this.state.detailsVisible && <WidgetDetails
+        {this.state.detailsVisible && <tacoDetails
           isVisible={this.state.detailsVisible}
           hideDetails={this.hideDetails}
-          widget={this.state.activeWidget} />}
+          taco={this.state.activetaco} />}
       </div>
     )
   },
 
-  showDetails (widget) {
+  showDetails (taco) {
     this.setState({
-      activeWidget: widget,
+      activeTaco: taco,
       detailsVisible: true
     })
   },
