@@ -52,10 +52,10 @@ export default React.createClass({
           tacos={this.state.tacos} />
         {this.state.addtacoVisible && <Addtaco
           finishAdd={this.refreshList} />}
-        {this.state.detailsVisible && <tacoDetails
+        {this.state.detailsVisible && <TacoDetails
           isVisible={this.state.detailsVisible}
           hideDetails={this.hideDetails}
-          taco={this.state.activetaco} />}
+          taco={this.state.activeTaco} />}
       </div>
     )
   },

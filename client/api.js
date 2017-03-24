@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-var widgetUrl = 'http://localhost:3000/tacos'
+var tacoUrl = 'http://localhost:3000/tacos'
 
 export default {
   getTacos: getTacos,
@@ -8,22 +8,22 @@ export default {
 }
 
 function getTacos (callback) {
-  var data = [
-    {id: 1, name: 'Chicken', price: 3, topping: 'Guacamole', shell: 'Soft', cheese: 'Edam'},
-    {id: 2, name: 'Fish', price: 4, topping: 'Salsa', shell: 'Hard', cheese: 'Cheddar'},
-    {id: 3, name: 'Beans', price: 2, topping: 'Guacamole', shell: 'Soft', cheese: 'Roquefort'}
-  ]
-  callback (null, data)
+  // var data = [
+  //   {id: 1, name: 'Chicken', price: 3, topping: 'Guacamole', shell: 'Soft', cheese: 'Edam'},
+  //   {id: 2, name: 'Fish', price: 4, topping: 'Salsa', shell: 'Hard', cheese: 'Cheddar'},
+  //   {id: 3, name: 'Beans', price: 2, topping: 'Guacamole', shell: 'Soft', cheese: 'Roquefort'}
+  // ]
+  // callback (null, data)
 
-//   request
-//     .get(tacoUrl)
-//     .end(function (err, res) {
-//       if (err) {
-//         callback(err)
-//       } else {
-//         callback(null, res.body)
-//       }
-//     })
+  request
+    .get(tacoUrl)
+    .end(function (err, res) {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null, res.body)
+      }
+    })
 }
 
 function appendTaco (taco, callback) {
