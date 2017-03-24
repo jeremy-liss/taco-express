@@ -2,9 +2,10 @@ import React from 'react'
 
 export default React.createClass({
   render () {
+
     const taco = this.props.taco
-    console.log(taco);
     const isVisble = this.props.isVisible
+    const hideList = () => this.props.hideList()
     const hide = () => this.props.hideDetails()
     const classes = "taco-details " + isVisble ? 'visible' : 'hidden'
     return (

@@ -13,7 +13,8 @@ export default React.createClass({
       tacos: [],
       activeTaco: null,
       detailsVisible: false,
-      addtacoVisible: false
+      addtacoVisible: false,
+      listVisible: true
     }
   },
 
@@ -47,15 +48,16 @@ export default React.createClass({
       <div>
         <ErrorMessage error={this.state.error} />
         <h1>Taco Express!</h1>
-        <TacoList
+        {this.state.listVisible && <TacoList
           showDetails={this.showDetails}
-          tacos={this.state.tacos} />
+          tacos={this.state.tacos} />}
         {this.state.addtacoVisible && <Addtaco
           finishAdd={this.refreshList} />}
         {this.state.detailsVisible && <TacoDetails
           isVisible={this.state.detailsVisible}
           hideDetails={this.hideDetails}
-          taco={this.state.activeTaco} />}
+          taco={this.state.activeTaco}
+          list={this.state.hideList} />}
       </div>
     )
   },
@@ -71,6 +73,14 @@ export default React.createClass({
     this.setState({
       detailsVisible: false
     })
-  }
+  },
+
+  hideList () {
+    this.setState({
+      listVisible: false
+    })
+  },
+
+
 
 })
